@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://m8xgpfka4t30"]
+
+[ext_resource type="Script" path="res://level 1/sprite/Player/sprite player/Script/new_gd_script.gd" id="1_ick7c"]
+[ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://level 1/sprite/Player/sprite player/static 1.png" id="2_bp7l5"]
+[ext_resource type="Texture2D" uid="uid://c1mrppqovvsfn" path="res://level 1/sprite/Player/sprite player/static 2.png" id="3_3136x"]
+[ext_resource type="Texture2D" uid="uid://b8f3qi1x2eiun" path="res://level 1/sprite/Player/sprite player/static 3.png" id="4_ri760"]
+[ext_resource type="Texture2D" uid="uid://bqfvogdfqomao" path="res://level 1/sprite/Player/sprite player/static 4.png" id="5_b3hwf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0eht"]
+radius = 39.0
+height = 134.0
+
+[sub_resource type="Animation" id="Animation_drb0j"]
+resource_name = "static"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_bp7l5"), ExtResource("3_3136x"), ExtResource("4_ri760"), ExtResource("5_b3hwf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgc1q"]
+_data = {
+"static": SubResource("Animation_drb0j")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(582, 183)
+script = ExtResource("1_ick7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_e0eht")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -7.62939e-06)
+scale = Vector2(0.4682, 0.431505)
+texture = ExtResource("2_bp7l5")
+
+[node name="static animation player" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vgc1q")
+}
