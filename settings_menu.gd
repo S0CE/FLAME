@@ -8,20 +8,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
 	pass
 
-	
 
-
-func _on_play_pressed():
+func _on_resume_pressed():
 	get_tree().change_scene_to_file("res://level-1.tscn")
 
 
-func _on_settings_pressed():
-	get_tree().change_scene_to_file("res://settings_menu.tscn")
-
-
 func _on_quit_pressed():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
+
+func _on_check_button_pressed():
+	pass # Replace with function body.
