@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://m8xgpfka4t30"]
 
-[ext_resource type="Script" path="res://level 1/sprite/Player/sprite player/Script/new_gd_script.gd" id="1_ick7c"]
-[ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://level 1/sprite/Player/sprite player/static 1.png" id="2_bp7l5"]
-[ext_resource type="Texture2D" uid="uid://c1mrppqovvsfn" path="res://level 1/sprite/Player/sprite player/static 2.png" id="3_3136x"]
-[ext_resource type="Texture2D" uid="uid://b8f3qi1x2eiun" path="res://level 1/sprite/Player/sprite player/static 3.png" id="4_ri760"]
-[ext_resource type="Texture2D" uid="uid://bqfvogdfqomao" path="res://level 1/sprite/Player/sprite player/static 4.png" id="5_b3hwf"]
+[ext_resource type="Script" path="res://Scenes/Player/Script/player_movement.gd" id="1_4xqdr"]
+[ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_bp7l5"]
+[ext_resource type="Texture2D" uid="uid://c1mrppqovvsfn" path="res://Scenes/Player/Sprites/static 2.png" id="3_3136x"]
+[ext_resource type="Texture2D" uid="uid://b8f3qi1x2eiun" path="res://Scenes/Player/Sprites/static 3.png" id="4_ri760"]
+[ext_resource type="Texture2D" uid="uid://bqfvogdfqomao" path="res://Scenes/Player/Sprites/static 4.png" id="5_b3hwf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0eht"]
-radius = 39.0
-height = 134.0
+radius = 37.0
+height = 98.0
 
 [sub_resource type="Animation" id="Animation_drb0j"]
 resource_name = "static"
@@ -33,9 +33,10 @@ _data = {
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(582, 183)
-script = ExtResource("1_ick7c")
+script = ExtResource("1_4xqdr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 5)
 shape = SubResource("CapsuleShape2D_e0eht")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
