@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfklglgkub1fr"]
+[gd_scene load_steps=8 format=3 uid="uid://cfklglgkub1fr"]
 
 [ext_resource type="Texture2D" uid="uid://d33kkx4yd0vlo" path="res://Scenes/Level/Tilesets/JAM-Background.png" id="1_7232v"]
+[ext_resource type="Script" path="res://level-1.gd" id="1_n01hq"]
 [ext_resource type="Texture2D" uid="uid://b1ytb8dqg4efn" path="res://Scenes/Level/Tilesets/JAM-Tilesets.png" id="2_0x3jw"]
 [ext_resource type="PackedScene" uid="uid://m8xgpfka4t30" path="res://Scenes/Player/player.tscn" id="3_rjhiw"]
+[ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Scenes/Musics/xc0ow-0mr75.wav" id="5_2vri4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w1lvw"]
 texture = ExtResource("2_0x3jw")
@@ -100,6 +102,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_w1lvw")
 
 [node name="Node" type="Node"]
+script = ExtResource("1_n01hq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -117,3 +120,6 @@ layer_0/tile_data = PackedInt32Array(23, 196608, 0, 851991, 196608, 0, 851968, 6
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("3_rjhiw")]
 position = Vector2(104, 566)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2vri4")
