@@ -1,10 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://m8xgpfka4t30"]
+[gd_scene load_steps=13 format=3 uid="uid://m8xgpfka4t30"]
 
-[ext_resource type="Script" path="res://Scenes/Player/Script/player_movement.gd" id="1_4xqdr"]
+[ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_4xqdr"]
 [ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_bp7l5"]
+[ext_resource type="PackedScene" uid="uid://crklklkxx4h0e" path="res://Scenes/Objects/fire.tscn" id="2_ielhu"]
 [ext_resource type="Texture2D" uid="uid://c1mrppqovvsfn" path="res://Scenes/Player/Sprites/static 2.png" id="3_3136x"]
 [ext_resource type="Texture2D" uid="uid://b8f3qi1x2eiun" path="res://Scenes/Player/Sprites/static 3.png" id="4_ri760"]
 [ext_resource type="Texture2D" uid="uid://bqfvogdfqomao" path="res://Scenes/Player/Sprites/static 4.png" id="5_b3hwf"]
+[ext_resource type="Texture2D" uid="uid://rpip8ne4obtb" path="res://Scenes/Player/Sprites/jumping.png" id="6_lkill"]
+[ext_resource type="Texture2D" uid="uid://8srs4k5myn4t" path="res://Scenes/Player/Sprites/running.png" id="7_1x5et"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq2nh"]
+atlas = ExtResource("7_1x5et")
+region = Rect2(0, 0, 224, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v1pq"]
+atlas = ExtResource("7_1x5et")
+region = Rect2(224, 0, 224, 300)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kjwoe"]
 animations = [{
@@ -27,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bp7l5")
+"texture": ExtResource("6_lkill")
 }],
 "loop": true,
 "name": &"jumping",
@@ -35,7 +46,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_bp7l5")
+"texture": SubResource("AtlasTexture_uq2nh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v1pq")
 }],
 "loop": true,
 "name": &"running",
@@ -50,9 +64,13 @@ height = 98.0
 position = Vector2(582, 183)
 script = ExtResource("1_4xqdr")
 
+[node name="GPUParticles2D" parent="." instance=ExtResource("2_ielhu")]
+position = Vector2(2, -33)
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4682, 0.431505)
 sprite_frames = SubResource("SpriteFrames_kjwoe")
+animation = &"running"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dtouxcudaujsm"
-path="res://.godot/imported/Death - Voice of the Soul.wav-cace00bd2ca07fb6bab01a54a5215203.sample"
+path="res://.godot/imported/Death - Voice of the Soul.wav-6e55f13becc23289d33e7720cb93778a.sample"
 
 [deps]
 
-source_file="res://Scenes/Musics/Death - Voice of the Soul.wav"
-dest_files=["res://.godot/imported/Death - Voice of the Soul.wav-cace00bd2ca07fb6bab01a54a5215203.sample"]
+source_file="res://Musics/Death - Voice of the Soul.wav"
+dest_files=["res://.godot/imported/Death - Voice of the Soul.wav-6e55f13becc23289d33e7720cb93778a.sample"]
 
 [params]
 

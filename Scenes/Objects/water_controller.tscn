@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://c532vjan4bqhq"]
+
+[ext_resource type="Texture2D" uid="uid://djaulxfkvrceg" path="res://Scenes/Level/Tilesets/JAM-WaterController.png" id="1_6iey7"]
+[ext_resource type="Script" path="res://Scripts/water_controller.gd" id="1_hb5qm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gkn8"]
+atlas = ExtResource("1_6iey7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rygn2"]
+atlas = ExtResource("1_6iey7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ico7w"]
+atlas = ExtResource("1_6iey7")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52yup"]
+atlas = ExtResource("1_6iey7")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4a12s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gkn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rygn2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ico7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52yup")
+}],
+"loop": true,
+"name": &"destroyed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljb81"]
+size = Vector2(42, 48)
+
+[node name="WaterController" type="Area2D"]
+script = ExtResource("1_hb5qm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4a12s")
+autoplay = "default"
+frame_progress = 0.437377
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ljb81")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

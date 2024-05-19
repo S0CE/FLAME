@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://crklklkxx4h0e"]
+
+[sub_resource type="Gradient" id="Gradient_nmpro"]
+offsets = PackedFloat32Array(0, 0.477124, 0.986928)
+colors = PackedColorArray(0.721569, 0.52549, 0, 1, 0.891056, 0.106133, 1.92523e-07, 0.976471, 1, 1, 1, 0.843137)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40vtd"]
+gradient = SubResource("Gradient_nmpro")
+
+[sub_resource type="Curve" id="Curve_kvoon"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n2631"]
+curve = SubResource("Curve_kvoon")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r338y"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+scale_min = 20.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_n2631")
+color_ramp = SubResource("GradientTexture1D_40vtd")
+anim_offset_max = 0.0525
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 9.45
+turbulence_noise_speed_random = 4.0
+turbulence_influence_min = 1.0
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_max = 38.1
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+process_material = SubResource("ParticleProcessMaterial_r338y")

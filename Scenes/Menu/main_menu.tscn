@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://drn8tvvpay1ak"]
 
-[ext_resource type="Script" path="res://Scenes/Menu/Scripts/main_menu.gd" id="1_k4wp6"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_k4wp6"]
 [ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_xnfeb"]
-[ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Scenes/Musics/xc0ow-0mr75.wav" id="3_gvs7p"]
+[ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Musics/xc0ow-0mr75.wav" id="3_gvs7p"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -47,7 +47,7 @@ texture = ExtResource("2_xnfeb")
 stream = ExtResource("3_gvs7p")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

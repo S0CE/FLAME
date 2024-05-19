@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0xiyeqqigpr2"]
+[gd_scene load_steps=4 format=3 uid="uid://b0xiyeqqigpr2"]
 
+[ext_resource type="Script" path="res://Scripts/finish.gd" id="1_clavy"]
 [ext_resource type="Texture2D" uid="uid://5ld0gishf5re" path="res://Scenes/Level/Tilesets/JAM-Finish.png" id="1_foixy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cuxj"]
 size = Vector2(50, 100)
 
 [node name="Finish" type="Area2D"]
+script = ExtResource("1_clavy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -14,3 +16,5 @@ texture = ExtResource("1_foixy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0cuxj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
