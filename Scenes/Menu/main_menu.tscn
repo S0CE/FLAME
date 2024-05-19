@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://drn8tvvpay1ak"]
+[gd_scene load_steps=6 format=3 uid="uid://drn8tvvpay1ak"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_k4wp6"]
+[ext_resource type="Texture2D" uid="uid://b6ad6moeu88a3" path="res://backscreen/360_F_522331099_Ha6ktAQY8ghcAR8PAqAqeKZZLRPm5g5W.jpg" id="2_5y1c1"]
 [ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_xnfeb"]
 [ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Musics/xc0ow-0mr75.wav" id="3_gvs7p"]
+[ext_resource type="Texture2D" uid="uid://dqaktxlmry0qy" path="res://backscreen/Capture_d_écran_2024-05-19_214519-removebg-preview.png" id="3_seif8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,6 +14,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k4wp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(574.25, 323.5)
+scale = Vector2(1.67716, 1.79167)
+texture = ExtResource("2_5y1c1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(835, 451)
+texture = ExtResource("3_seif8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -39,15 +50,15 @@ size_flags_vertical = 3
 text = "Quit Game"
 
 [node name="Static1" type="Sprite2D" parent="."]
-position = Vector2(622, 503)
-scale = Vector2(1.19421, 1.19)
+position = Vector2(378, 488)
+scale = Vector2(1.4313, 1.25167)
 texture = ExtResource("2_xnfeb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gvs7p")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
