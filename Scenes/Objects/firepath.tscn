@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwf2dcjuu0u7b"]
+
+[ext_resource type="Texture2D" uid="uid://d3f7ljmm2s881" path="res://Scenes/Level/Tilesets/JAM-Fire.png" id="1_7dmka"]
+[ext_resource type="Script" path="res://Scripts/firepath.gd" id="1_snlw1"]
+
+[sub_resource type="GDScript" id="GDScript_gpc55"]
+script/source = "extends Area2D
+class_name Flame
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh3t6"]
+atlas = ExtResource("1_7dmka")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n46i"]
+atlas = ExtResource("1_7dmka")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ded35"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh3t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n46i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_76054"]
+radius = 20.025
+
+[sub_resource type="Animation" id="Animation_au0xc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_eo8ww"]
+resource_name = "move"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxanm"]
+_data = {
+"RESET": SubResource("Animation_au0xc"),
+"move": SubResource("Animation_eo8ww")
+}
+
+[node name="Firepath" type="Path2D"]
+position = Vector2(4913, 570)
+script = ExtResource("1_snlw1")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(-4914, -570)
+rotation = 0.00578028
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-4914, -570)
+rotation = 0.00578028
+script = SubResource("GDScript_gpc55")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_ded35")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_76054")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxanm")
+}
+autoplay = "RESET"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
