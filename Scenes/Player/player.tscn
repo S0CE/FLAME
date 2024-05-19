@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://m8xgpfka4t30"]
+[gd_scene load_steps=8 format=3 uid="uid://m8xgpfka4t30"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Script/player_movement.gd" id="1_4xqdr"]
 [ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_bp7l5"]
@@ -6,45 +6,55 @@
 [ext_resource type="Texture2D" uid="uid://b8f3qi1x2eiun" path="res://Scenes/Player/Sprites/static 3.png" id="4_ri760"]
 [ext_resource type="Texture2D" uid="uid://bqfvogdfqomao" path="res://Scenes/Player/Sprites/static 4.png" id="5_b3hwf"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_kjwoe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bp7l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3136x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ri760")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_b3hwf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bp7l5")
+}],
+"loop": true,
+"name": &"jumping",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bp7l5")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0eht"]
 radius = 37.0
 height = 98.0
-
-[sub_resource type="Animation" id="Animation_drb0j"]
-resource_name = "static"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_bp7l5"), ExtResource("3_3136x"), ExtResource("4_ri760"), ExtResource("5_b3hwf")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vgc1q"]
-_data = {
-"static": SubResource("Animation_drb0j")
-}
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(582, 183)
 script = ExtResource("1_4xqdr")
 
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.4682, 0.431505)
+sprite_frames = SubResource("SpriteFrames_kjwoe")
+autoplay = "default"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 5)
 shape = SubResource("CapsuleShape2D_e0eht")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.8147e-06, -7.62939e-06)
-scale = Vector2(0.4682, 0.431505)
-texture = ExtResource("2_bp7l5")
-
-[node name="static animation player" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vgc1q")
-}

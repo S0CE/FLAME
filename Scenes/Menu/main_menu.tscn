@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://htihjoxb6h5v"]
+[gd_scene load_steps=4 format=3 uid="uid://drn8tvvpay1ak"]
 
-[ext_resource type="Script" path="res://MainMenu.gd" id="1_efphv"]
-[ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_dbtyk"]
-[ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Scenes/Musics/xc0ow-0mr75.wav" id="3_r47nd"]
+[ext_resource type="Script" path="res://Scenes/Menu/Scripts/main_menu.gd" id="1_k4wp6"]
+[ext_resource type="Texture2D" uid="uid://dcbvjf2afuv5p" path="res://Scenes/Player/Sprites/static 1.png" id="2_xnfeb"]
+[ext_resource type="AudioStream" uid="uid://c7vsd625ucvy5" path="res://Scenes/Musics/xc0ow-0mr75.wav" id="3_gvs7p"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_efphv")
+script = ExtResource("1_k4wp6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,12 +41,12 @@ text = "Quit Game"
 [node name="Static1" type="Sprite2D" parent="."]
 position = Vector2(622, 503)
 scale = Vector2(1.19421, 1.19)
-texture = ExtResource("2_dbtyk")
+texture = ExtResource("2_xnfeb")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_r47nd")
+stream = ExtResource("3_gvs7p")
 
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
